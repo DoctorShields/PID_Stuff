@@ -1,0 +1,6 @@
+{
+    "port": "COM9",
+    "board": "arduino:avr:uno",
+    "programmer": "AVR ISP",
+    "sketch": "PID_Code.ino"
+}
