@@ -21,7 +21,7 @@ void setup() {
     xArr[i] = (i+1)*spacing;
   println("Available serial ports:");
   println(Serial.list());
-  myPort = new Serial(this, Serial.list()[1], 9600);
+  myPort = new Serial(this, Serial.list()[0], 9600);
   frameRate(12);
   drawBg();
 }
@@ -53,8 +53,7 @@ void draw()
     if (myStr != null) 
     {
       myStr = myStr.trim();
-      dataArr = split(myStr, "|");
-      println(dataArr);
+      dataArr = split(myStr, ",");
       if (count < xVals) {
         count ++;
       } else {
@@ -64,9 +63,8 @@ void draw()
           yArr2[i] = yArr2[i+1];
         }
       }
-      //print(yArr1);
-      //yArr1[count-1] = Integer.parseInt(dataArr[1])+(screenH-spacing)/2;
-      //yArr2[count-1] = Integer.parseInt(dataArr[2])+(screenH-spacing)/2;
+      yArr1[count-1] = Integer.parseInt(dataArr[0])/50+(screenH-spacing)/2;
+      yArr2[count-1] = Integer.parseInt(dataArr[1])/50+(screenH-spacing)/2;
       if(count > 1)
           drawLines();
     }
